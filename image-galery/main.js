@@ -2,12 +2,13 @@ const button = document.querySelector('.button')
 const inputValue = document.getElementById('sum')
 const input = document.querySelector('.input')
 const main = document.querySelector('.conteiner-main');
-let urlAuto = 'https://api.unsplash.com/search/photos?query=life&per_page=30&orientation=landscape&client_id=_bG4GSRHvReIWGX9oTU9bjQUgfg8qezKyPPvQPOUpQQ';
+let urlAuto = 'https://api.unsplash.com/photos/random?count=30&orientation=landscape&client_id=_bG4GSRHvReIWGX9oTU9bjQUgfg8qezKyPPvQPOUpQQ';
 let reg = false
 search(urlAuto)
 function search(url) {
     if (inputValue.value === '') {
         url = urlAuto;
+        console.log('fgv')
     }
     fetch(url)
     .then((url2) => url2.json())
@@ -24,14 +25,28 @@ function changeImg(image) {
 
 function appendImg(data) {
     if (reg) {
-        for (let i = 0; i < 30; i++) {
-            document.querySelectorAll('.img')[i].src = `${data.results[i].urls.regular}`;
+        if (inputValue.value === '') {
+            for (let i = 0; i < 30; i++) {
+                document.querySelectorAll('.img')[i].src = `${data[i].urls.regular}`;
+            }
+        } else {
+            for (let i = 0; i < 30; i++) {
+                document.querySelectorAll('.img')[i].src = `${data.results[i].urls.regular}`;
+            }
         }
     } else {
-        for (let i = 0; i < 30; i++) {
-            const img = data.results[i].urls.regular;
-            console.log(img);
-            changeImg(img);
+        if (inputValue.value !== '') {
+            for (let i = 0; i < 30; i++) {
+                const img = data.results[i].urls.regular;
+                console.log(img);
+                changeImg(img);
+            }
+        } else {
+            for (let i = 0; i < 30; i++) {
+                const img = data[i].urls.regular;
+                console.log(img);
+                changeImg(img);
+            }
         }
         reg = true;
     }
@@ -39,14 +54,16 @@ function appendImg(data) {
 
 button.addEventListener('click', function() {
         search(`https://api.unsplash.com/search/photos?query=${inputValue.value}&per_page=30&orientation=landscape&client_id=_bG4GSRHvReIWGX9oTU9bjQUgfg8qezKyPPvQPOUpQQ`)
-        urlAuto = `https://api.unsplash.com/search/photos?query=${inputValue.value}&per_page=30&orientation=landscape&client_id=_bG4GSRHvReIWGX9oTU9bjQUgfg8qezKyPPvQPOUpQQ`
         console.log(inputValue.value)
 })
 input.addEventListener('change', function() {
     search(`https://api.unsplash.com/search/photos?query=${inputValue.value}&per_page=30&orientation=landscape&client_id=_bG4GSRHvReIWGX9oTU9bjQUgfg8qezKyPPvQPOUpQQ`)
-    urlAuto = `https://api.unsplash.com/search/photos?query=${inputValue.value}&per_page=30&orientation=landscape&client_id=_bG4GSRHvReIWGX9oTU9bjQUgfg8qezKyPPvQPOUpQQ`
     console.log(inputValue.value)
 })
 
 //search(urlAuto);
-
+for (let i = 0; i < 30; i++) {
+    document.querySelectorAll('.img')[i].addEventListener('click', () => {
+        document.querySelectorAll('.img')[i].classList.toggle('img-super')
+    })
+}
