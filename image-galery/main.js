@@ -5,7 +5,7 @@ const main = document.querySelector('.conteiner-main');
 const popUp = document.querySelector('.popup')
 let urlAuto = 'https://api.unsplash.com/photos/random?count=30&orientation=landscape&client_id=_bG4GSRHvReIWGX9oTU9bjQUgfg8qezKyPPvQPOUpQQ';
 let reg = false
-//search(urlAuto)
+search(urlAuto)
 function search(url) {
     if (inputValue.value === '') {
         url = urlAuto;
@@ -80,4 +80,8 @@ main.addEventListener('click', (e) => {
 popUp.addEventListener('click', (e) => {
     document.querySelector('.img-super').remove()
     popUp.classList.add('hidden')
+})
+
+document.querySelector('.cross').addEventListener('click', () => {
+    inputValue.value = '';
 })

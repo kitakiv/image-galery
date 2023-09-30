@@ -35,7 +35,6 @@ header {
 
 .search {
     width: 2.5rem;
-    margin-left: -10rem;
     height: auto;
 }
 
@@ -181,4 +180,22 @@ main {
 
 .hidden {
     display: none;
+}
+
+.cross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -6rem;
+}
+
+.cross2 {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: all 0.5s;
+}
+
+.cross2:hover {
+    transform: scale(1.2);
+    transition: all 0.5s;
 }
