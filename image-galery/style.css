@@ -155,7 +155,7 @@ main {
     max-width: 85vw;
     max-height: 80vh;
     height: auto;
-    border-radius: 5rem;
+    border-radius: 1rem;
 }
 
 .img:hover {
@@ -198,4 +198,46 @@ main {
 .cross2:hover {
     transform: scale(1.2);
     transition: all 0.5s;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 7px;
+    }
+
+    .conteiner {
+        height: 13rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .line {
+        margin-top: 2rem;
+        width: 100%;
+        height: 0.5rem;
+        background-color: #ffd000;
+    }
+
+    .camera {
+        margin-top: 2rem;
+    }
+
+    .conteiner-input {
+        margin-left: -6rem;
+    }
+
+    header {
+        width: 100%;
+        height: 15rem;
+        font-family:'Comfortaa', cursive;
+    }
+
+}
+
+@media (max-width: 550px) {
+    html {
+        font-size: 5px;
+    }
 }
